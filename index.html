@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta name="robots" content="noindex, nofollow, noarchive"/>
+<meta name="googlebot" content="noindex, nofollow, noarchive"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SAI | Catálogo, Métricas e Roadmap | TA · IHM</title>
+<style>
+    :root {
+      --blue-950: #082f49;
+      --blue-900: #0f3b57;
+      --blue-800: #075985;
+      --blue-700: #0369a1;
+      --blue-600: #0284c7;
+      --blue-500: #0ea5e9;
+      --blue-400: #38bdf8;
+      --blue-300: #7dd3fc;
+      --blue-200: #bae6fd;
+      --blue-100: #e0f2fe;
+      --blue-50: #f0f9ff;
+      --cyan-50: #ecfeff;
+      --white: #ffffff;
+      --slate-950: #0f172a;
+      --slate-800: #1e293b;
+      --slate-700: #334155;
+      --slate-600: #475569;
+      --slate-500: #64748b;
+      --slate-200: #e2e8f0;
+      --slate-100: #f1f5f9;
+      --green: #16a34a;
+      --amber: #f59e0b;
+      --red: #ef4444;
+      --purple: #7c3aed;
+      --shadow: 0 22px 60px rgba(8,47,73,.14);
+      --soft-shadow: 0 10px 28px rgba(8,47,73,.09);
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --radius-md: 14px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+      color: var(--slate-950);
+      background:
+        radial-gradient(circle at 10% 4%, rgba(125,211,252,.45), transparent 30%),
+        radial-gradient(circle at 88% 2%, rgba(186,230,253,.8), transparent 28%),
+        linear-gradient(180deg, #f8fdff 0%, #eef8ff 42%, #ffffff 100%);
+      line-height: 1.55;
+    }
+
+    a { color: inherit; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.86);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(14,165,233,.14);
+    }
+    .nav {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand { display:flex; align-items:center; gap:12px; font-weight:900; letter-spacing:-.035em; }
+    .brand-mark {
+      width: 44px; height:44px; border-radius: 15px; display:grid; place-items:center;
+      color: white; font-weight: 950;
+      background: linear-gradient(135deg, var(--blue-500), var(--blue-800));
+      box-shadow: 0 14px 30px rgba(14,165,233,.28);
+    }
+    .brand small { display:block; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--slate-500); font-weight:800; }
+    .navlinks { display:flex; flex-wrap:wrap; justify-content:flex-end; gap:8px; font-size:13px; color:var(--slate-700); }
+    .navlinks a { text-decoration:none; padding:8px 11px; border-radius:999px; transition:.18s; }
+    .navlinks a:hover { background:var(--blue-100); color:var(--blue-800); }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      color: white;
+      background:
+        radial-gradient(circle at 82% 8%, rgba(186,230,253,.35), transparent 25%),
+        radial-gradient(circle at 15% 80%, rgba(56,189,248,.20), transparent 25%),
+        linear-gradient(135deg, var(--blue-950) 0%, #0b4f79 44%, var(--blue-600) 100%);
+    }
+    .hero::before {
+      content:"";
+      position:absolute; inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.055) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,.95), rgba(0,0,0,.28));
+    }
+    .hero-inner { position:relative; max-width:1320px; margin:0 auto; padding:72px 24px 54px; display:grid; grid-template-columns: 1.15fr .85fr; gap:32px; align-items:center; }
+    .eyebrow { display:inline-flex; align-items:center; gap:8px; padding:8px 12px; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.22); border-radius:999px; font-size:13px; font-weight:800; margin-bottom:20px; }
+    .hero h1 { margin:0; font-size: clamp(36px, 5vw, 68px); line-height:.96; letter-spacing:-.07em; }
+    .hero h1 span { color:#d9f7ff; }
+    .hero p { font-size:18px; color:rgba(255,255,255,.86); max-width:760px; margin:22px 0 0; }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:9px; padding:12px 16px; border-radius:999px; text-decoration:none; font-weight:850; border:1px solid transparent; }
+    .btn-primary { background:white; color:var(--blue-800); box-shadow:0 18px 42px rgba(0,0,0,.20); }
+    .btn-secondary { background:rgba(255,255,255,.10); color:white; border-color:rgba(255,255,255,.22); }
+
+    .hero-panel { background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.22); border-radius:var(--radius-xl); padding:22px; box-shadow:0 28px 70px rgba(0,0,0,.22); backdrop-filter: blur(18px); }
+    .panel-title { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:16px; }
+    .panel-title h2 { margin:0; font-size:19px; letter-spacing:-.02em; }
+    .status-pill { font-size:12px; font-weight:900; padding:7px 10px; border-radius:999px; background:rgba(22,163,74,.22); border:1px solid rgba(187,247,208,.45); color:#dcfce7; white-space:nowrap; }
+    .metric-grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:12px; }
+    .metric { background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.18); border-radius:20px; padding:16px; }
+    .metric strong { display:block; font-size:31px; line-height:1; letter-spacing:-.05em; }
+    .metric span { display:block; margin-top:7px; font-size:12px; color:rgba(255,255,255,.78); font-weight:750; }
+
+    main { max-width:1320px; margin:0 auto; padding:42px 24px 90px; }
+    section { scroll-margin-top:84px; }
+    .section-head { display:flex; justify-content:space-between; align-items:flex-end; gap:22px; margin:46px 0 20px; }
+    .section-kicker { color:var(--blue-700); font-weight:900; text-transform:uppercase; letter-spacing:.12em; font-size:12px; }
+    h2.section-title { margin:6px 0 0; font-size: clamp(26px, 3vw, 42px); line-height:1.05; letter-spacing:-.055em; }
+    .section-head p { max-width:520px; color:var(--slate-600); margin:0; }
+
+    .card { background:rgba(255,255,255,.88); border:1px solid rgba(14,165,233,.12); border-radius:var(--radius-lg); box-shadow:var(--soft-shadow); }
+    .grid-3 { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:18px; }
+    .grid-2 { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:18px; }
+    .grid-4 { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:18px; }
+    .summary-card { padding:22px; position:relative; overflow:hidden; }
+    .summary-card::after { content:""; position:absolute; width:110px; height:110px; border-radius:50%; right:-38px; top:-38px; background:var(--blue-100); z-index:0; }
+    .summary-card > * { position:relative; z-index:1; }
+    .summary-card .icon { width:42px; height:42px; border-radius:14px; display:grid; place-items:center; background:linear-gradient(135deg,var(--blue-100),var(--cyan-50)); color:var(--blue-800); font-size:22px; margin-bottom:14px; }
+    .summary-card h3 { margin:0 0 8px; font-size:20px; letter-spacing:-.025em; }
+    .summary-card p { margin:0; color:var(--slate-600); }
+
+    .okr { padding:24px; }
+    .okr-title { display:flex; justify-content:space-between; align-items:start; gap:18px; border-bottom:1px solid var(--slate-200); padding-bottom:18px; margin-bottom:18px; }
+    .okr-title h3 { margin:0; font-size:26px; letter-spacing:-.04em; }
+    .okr-title p { margin:8px 0 0; color:var(--slate-600); }
+    .okr-badge { padding:8px 12px; border-radius:999px; background:var(--blue-100); color:var(--blue-800); font-weight:900; font-size:13px; white-space:nowrap; }
+    .kr { display:grid; grid-template-columns: 150px 1fr 130px; gap:14px; align-items:center; padding:14px 0; border-bottom:1px solid rgba(226,232,240,.7); }
+    .kr:last-child { border-bottom:0; }
+    .kr strong { color:var(--blue-800); }
+    .kr p { margin:0; color:var(--slate-700); }
+    .status { display:inline-flex; justify-content:center; align-items:center; padding:7px 10px; border-radius:999px; font-size:12px; font-weight:900; }
+    .done { background:#dcfce7; color:#166534; }
+    .progress { background:#fef3c7; color:#92400e; }
+    .planned { background:var(--blue-100); color:var(--blue-800); }
+
+    .timeline { position:relative; padding:10px 0 2px; }
+    .timeline::before { content:""; position:absolute; top:0; bottom:0; left:25px; width:3px; background:linear-gradient(var(--blue-200), var(--blue-500), var(--blue-200)); border-radius:999px; }
+    .tl-item { position:relative; display:grid; grid-template-columns:70px 1fr; gap:18px; margin:0 0 18px; }
+    .tl-dot { width:54px; height:54px; border-radius:18px; display:grid; place-items:center; background:white; border:2px solid var(--blue-300); color:var(--blue-800); box-shadow:var(--soft-shadow); z-index:1; font-size:22px; }
+    .tl-card { padding:19px 21px; }
+    .tl-card h3 { margin:0; font-size:20px; letter-spacing:-.025em; display:flex; align-items:center; gap:9px; flex-wrap:wrap; }
+    .tl-card p { color:var(--slate-600); margin:8px 0 12px; }
+    .tag-row { display:flex; flex-wrap:wrap; gap:8px; }
+    .tag { display:inline-flex; align-items:center; border-radius:999px; padding:6px 9px; background:var(--blue-50); color:var(--blue-800); font-weight:800; font-size:12px; border:1px solid var(--blue-100); }
+
+    .bot-board { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:14px; }
+    .bot { padding:17px; border-radius:20px; background:white; border:1px solid rgba(14,165,233,.12); box-shadow:0 7px 20px rgba(8,47,73,.06); min-height:142px; display:flex; flex-direction:column; }
+    .bot .type { color:var(--blue-700); font-size:11px; font-weight:950; text-transform:uppercase; letter-spacing:.11em; margin-bottom:8px; }
+    .bot h3 { margin:0 0 8px; font-size:16px; letter-spacing:-.02em; }
+    .bot p { margin:0; color:var(--slate-600); font-size:13px; flex:1; }
+    .bot footer { margin-top:14px; display:flex; align-items:center; justify-content:space-between; gap:10px; }
+    .mini-status { font-size:11px; font-weight:950; padding:5px 8px; border-radius:999px; }
+    .active { background:#dcfce7; color:#166534; }
+    .dev { background:#fef3c7; color:#92400e; }
+    .test { background:var(--blue-100); color:var(--blue-800); }
+
+    .wave-grid { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:16px; }
+    .wave { padding:20px; position:relative; overflow:hidden; }
+    .wave::before { content:""; position:absolute; inset:0 0 auto 0; height:6px; background:linear-gradient(90deg,var(--blue-300),var(--blue-600)); }
+    .wave h3 { margin:8px 0 10px; font-size:19px; letter-spacing:-.025em; }
+    .wave ul, .two-col ul { margin:0; padding-left:19px; color:var(--slate-700); }
+    .wave li, .two-col li { margin:7px 0; }
+    .wave .period { color:var(--blue-800); font-weight:950; font-size:12px; text-transform:uppercase; letter-spacing:.12em; }
+
+    .two-col { display:grid; grid-template-columns: .95fr 1.05fr; gap:18px; }
+    .box { padding:22px; }
+    .box h3 { margin:0 0 12px; font-size:22px; letter-spacing:-.03em; }
+    .box p { color:var(--slate-600); margin:0 0 12px; }
+
+    .process { display:grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap:12px; }
+    .step { padding:16px; background:white; border-radius:18px; border:1px solid rgba(14,165,233,.12); box-shadow:0 7px 20px rgba(8,47,73,.05); }
+    .step b { display:inline-grid; place-items:center; width:32px; height:32px; border-radius:11px; background:var(--blue-100); color:var(--blue-800); margin-bottom:10px; }
+    .step h3 { margin:0 0 6px; font-size:15px; }
+    .step p { margin:0; font-size:13px; color:var(--slate-600); }
+
+    .callout { margin-top:18px; padding:22px; border-radius:var(--radius-lg); background:linear-gradient(135deg,var(--blue-100),var(--cyan-50)); border:1px solid rgba(14,165,233,.18); display:flex; align-items:center; justify-content:space-between; gap:18px; }
+    .callout h3 { margin:0 0 6px; font-size:24px; letter-spacing:-.035em; }
+    .callout p { margin:0; color:var(--slate-700); }
+
+    .kpi-strip { display:grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap:14px; }
+    .kpi { padding:18px; text-align:center; background:white; border-radius:20px; border:1px solid rgba(14,165,233,.12); box-shadow:0 7px 20px rgba(8,47,73,.05); }
+    .kpi strong { display:block; font-size:30px; line-height:1; letter-spacing:-.05em; color:var(--blue-800); }
+    .kpi span { display:block; margin-top:8px; font-size:12px; color:var(--slate-600); font-weight:800; }
+
+    .footer { margin-top:54px; padding:30px; border-radius:var(--radius-xl); color:white; background:linear-gradient(135deg,var(--blue-950),var(--blue-700)); display:flex; align-items:center; justify-content:space-between; gap:18px; }
+    .footer h2 { margin:0; font-size:27px; letter-spacing:-.04em; }
+    .footer p { margin:8px 0 0; color:rgba(255,255,255,.78); }
+    .print-note { color:rgba(255,255,255,.78); font-size:13px; text-align:right; }
+
+
+    .okr-dashboard { display:grid; grid-template-columns: 1.1fr .9fr; gap:18px; margin-top:18px; }
+    .okr-progress-card { padding:24px; background:linear-gradient(135deg, #ffffff, var(--blue-50)); }
+    .okr-progress-card h4 { margin:0 0 8px; font-size:21px; letter-spacing:-.03em; }
+    .okr-progress-card p { margin:0; color:var(--slate-600); }
+    .progress-wrap { margin-top:18px; }
+    .progress-label { display:flex; justify-content:space-between; gap:12px; font-size:13px; color:var(--slate-600); font-weight:850; margin-bottom:8px; }
+    .progress-track { height:18px; border-radius:999px; background:var(--blue-100); border:1px solid rgba(14,165,233,.16); overflow:hidden; }
+    .progress-fill { height:100%; border-radius:999px; background:linear-gradient(90deg, var(--blue-400), var(--blue-700)); width:27.4%; }
+    .calc-grid { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:12px; margin-top:18px; }
+    .calc { padding:16px; border-radius:18px; background:#fff; border:1px solid rgba(14,165,233,.12); box-shadow:0 7px 20px rgba(8,47,73,.05); }
+    .calc strong { display:block; font-size:29px; letter-spacing:-.05em; color:var(--blue-800); line-height:1; }
+    .calc span { display:block; margin-top:7px; color:var(--slate-600); font-size:12px; font-weight:850; }
+    .formula { margin-top:14px; padding:14px 16px; border-radius:16px; background:rgba(14,165,233,.08); color:var(--slate-700); font-size:14px; }
+    .formula b { color:var(--blue-800); }
+    .usage-card { padding:22px; }
+    .usage-grid { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:14px; margin-bottom:18px; }
+    .usage-kpi { padding:17px; border-radius:20px; background:linear-gradient(135deg,#fff,var(--blue-50)); border:1px solid rgba(14,165,233,.13); box-shadow:0 7px 20px rgba(8,47,73,.05); }
+    .usage-kpi strong { display:block; font-size:30px; color:var(--blue-800); line-height:1; letter-spacing:-.05em; }
+    .usage-kpi span { display:block; margin-top:8px; color:var(--slate-600); font-weight:800; font-size:12px; }
+    .table-wrap { overflow:auto; border-radius:18px; border:1px solid var(--slate-200); background:white; }
+    table.usage-table { width:100%; border-collapse:collapse; min-width:760px; }
+    .usage-table th, .usage-table td { padding:12px 14px; text-align:left; border-bottom:1px solid var(--slate-200); font-size:14px; }
+    .usage-table th { background:var(--blue-50); color:var(--blue-800); font-size:12px; text-transform:uppercase; letter-spacing:.08em; font-weight:950; }
+    .usage-table tr:last-child td { border-bottom:0; }
+    .usage-table td:nth-child(3) { font-weight:900; color:var(--blue-800); white-space:nowrap; }
+    .rank { display:inline-grid; place-items:center; width:28px; height:28px; border-radius:10px; background:var(--blue-100); color:var(--blue-800); font-weight:950; }
+    .note { margin-top:12px; color:var(--slate-500); font-size:13px; }
+
+
+    .bot-link {
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      width:100%; margin-top:14px; padding:10px 12px; border-radius:12px;
+      background:var(--blue-50); border:1px solid var(--blue-100); color:var(--blue-800);
+      text-decoration:none; font-size:12px; font-weight:900; transition:.18s;
+    }
+    .bot-link:hover { background:var(--blue-100); transform:translateY(-1px); }
+    .bot-link.pending { background:#fffaf0; border-color:#fde68a; color:#92400e; }
+    .bot footer { margin-top:10px; }
+    .bot footer span:last-child { font-size:18px; }
+
+    .practice-intro { padding:25px; background:linear-gradient(135deg,#fff,var(--blue-50)); }
+    .practice-intro h3 { margin:0 0 9px; font-size:25px; letter-spacing:-.035em; }
+    .practice-intro p { margin:0; color:var(--slate-600); max-width:920px; }
+    .practice-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; margin-top:18px; }
+    .practice-item { padding:18px; background:#fff; border:1px solid rgba(14,165,233,.12); border-radius:18px; box-shadow:0 7px 20px rgba(8,47,73,.05); }
+    .practice-number { display:inline-grid; place-items:center; width:30px; height:30px; margin-bottom:10px; border-radius:10px; background:var(--blue-100); color:var(--blue-800); font-size:13px; font-weight:950; }
+    .practice-item h4 { margin:0 0 7px; font-size:16px; letter-spacing:-.02em; }
+    .practice-item p { margin:0; font-size:13px; color:var(--slate-600); }
+    .prompt-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; margin-top:18px; }
+    .prompt-card { padding:22px; }
+    .prompt-card h3 { margin:0 0 10px; font-size:20px; letter-spacing:-.025em; }
+    .prompt-card p { margin:0 0 13px; color:var(--slate-600); }
+    .prompt-example { padding:15px 16px; background:var(--slate-950); color:#e0f2fe; border-radius:15px; font-size:14px; line-height:1.6; white-space:pre-line; }
+    .prompt-example b { color:#7dd3fc; }
+    .natural-note { margin-top:18px; padding:19px 20px; border-left:5px solid var(--blue-600); border-radius:0 18px 18px 0; background:var(--blue-50); }
+    .natural-note h3 { margin:0 0 6px; font-size:19px; letter-spacing:-.025em; }
+    .natural-note p { margin:0; color:var(--slate-700); }
+    .link-register { margin-top:20px; padding:20px 22px; border-radius:var(--radius-lg); background:#fffaf0; border:1px solid #fde68a; }
+    .link-register h3 { margin:0 0 8px; font-size:20px; letter-spacing:-.025em; color:#78350f; }
+    .link-register p { margin:0; color:#92400e; }
+    .link-register details { margin-top:14px; }
+    .link-register summary { cursor:pointer; color:#92400e; font-weight:900; }
+    .link-checklist { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px 16px; margin:14px 0 0; padding:0; list-style:none; color:var(--slate-700); font-size:13px; }
+    .link-checklist li { padding:9px 10px; background:#fff; border-radius:10px; border:1px solid #fef3c7; }
+    .link-checklist li::before { content:"↗"; color:#d97706; font-weight:950; margin-right:7px; }
+
+    @media (max-width: 1080px) {
+      .hero-inner, .two-col { grid-template-columns:1fr; }
+      .grid-4, .bot-board, .wave-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .process { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .okr-dashboard { grid-template-columns:1fr; }
+      .usage-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .practice-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .link-checklist { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .kpi-strip { grid-template-columns: repeat(3, minmax(0,1fr)); }
+    }
+    @media (max-width: 780px) {
+      .nav { align-items:flex-start; flex-direction:column; }
+      .hero-inner { padding-top:48px; }
+      .metric-grid, .grid-3, .grid-2, .grid-4, .bot-board, .wave-grid, .process, .kpi-strip, .calc-grid, .usage-grid, .practice-grid, .prompt-grid, .link-checklist { grid-template-columns:1fr; }
+      .section-head { display:block; }
+      .section-head p { margin-top:10px; }
+      .kr { grid-template-columns:1fr; }
+      .callout, .footer { flex-direction:column; align-items:flex-start; }
+      .print-note { text-align:left; }
+    }
+    @media print {
+      .topbar, .hero-actions { display:none; }
+      body { background:white; }
+      .hero { border-radius:0; }
+      main { padding:20px; }
+      .card, .bot, .step, .kpi { box-shadow:none !important; }
+      section { page-break-inside: avoid; }
+    }
+  
+
+    /* Catálogo de bots: métricas e busca rápida */
+    .usage-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
+    .usage-table td:nth-child(3) { font-weight:900; color:var(--blue-800); white-space:nowrap; }
+    .kpi-strip.compact { grid-template-columns: repeat(4, minmax(0,1fr)); }
+
+    .catalog-toolbar {
+      display:flex; align-items:center; justify-content:space-between; gap:16px;
+      padding:14px 16px; margin:0 0 16px; border-radius:16px;
+      border:1px solid rgba(14,165,233,.16); background:var(--blue-50);
+    }
+    .catalog-toolbar label { display:flex; align-items:center; gap:10px; flex:1; color:var(--blue-900); font-size:13px; font-weight:850; }
+    .catalog-toolbar input {
+      width:min(370px, 100%); padding:10px 12px; border:1px solid var(--blue-200);
+      border-radius:10px; background:#fff; color:var(--slate-950); font:inherit; outline:none;
+    }
+    .catalog-toolbar input:focus { border-color:var(--blue-500); box-shadow:0 0 0 3px rgba(14,165,233,.13); }
+    .catalog-toolbar small { color:var(--slate-600); font-size:12px; font-weight:750; white-space:nowrap; }
+    .bot-stats { display:flex; align-items:center; gap:8px; margin-top:12px; }
+    .bot-use { display:inline-flex; align-items:center; gap:5px; border-radius:999px; padding:6px 9px; background:var(--blue-50); border:1px solid var(--blue-100); color:var(--blue-800); font-size:12px; font-weight:900; }
+    .bot-link.pending { cursor:default; text-decoration:none; }
+    .bot.is-hidden { display:none; }
+    .catalog-empty { display:none; grid-column:1/-1; padding:22px; text-align:center; border:1px dashed var(--blue-300); border-radius:18px; color:var(--slate-600); background:var(--blue-50); }
+    .catalog-empty.visible { display:block; }
+
+    @media (max-width:1080px) {
+      .usage-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+      .kpi-strip.compact { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    }
+    @media (max-width:780px) {
+      .catalog-toolbar { align-items:stretch; flex-direction:column; }
+      .catalog-toolbar label { align-items:stretch; flex-direction:column; }
+      .catalog-toolbar input { width:100%; }
+      .usage-grid, .kpi-strip.compact { grid-template-columns:1fr; }
+    }
+
+
+    /* Atualização v6: catálogo mais direto e indicadores auditáveis */
+    .metrics-meta { display:flex; flex-wrap:wrap; gap:8px; margin:14px 0 0; }
+    .metrics-meta span { padding:7px 10px; border-radius:999px; background:var(--blue-50); border:1px solid var(--blue-100); color:var(--slate-600); font-size:12px; font-weight:750; }
+    .metrics-meta b { color:var(--blue-800); }
+    .top-bots { margin-top:18px; padding:20px; border-radius:var(--radius-lg); border:1px solid rgba(14,165,233,.14); background:linear-gradient(135deg,#ffffff,var(--blue-50)); }
+    .top-bots-title { display:flex; align-items:end; justify-content:space-between; gap:16px; margin-bottom:14px; }
+    .top-bots-title span { color:var(--blue-700); font-size:12px; font-weight:950; letter-spacing:.12em; text-transform:uppercase; }
+    .top-bots-title h3 { margin:4px 0 0; font-size:21px; letter-spacing:-.03em; }
+    .top-bots-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+    .top-bot-card { display:flex; align-items:center; gap:11px; min-width:0; padding:15px; border-radius:16px; background:#fff; color:inherit; text-decoration:none; border:1px solid rgba(14,165,233,.12); box-shadow:0 7px 20px rgba(8,47,73,.05); transition:.18s; }
+    .top-bot-card:hover { transform:translateY(-2px); border-color:var(--blue-300); box-shadow:0 12px 25px rgba(8,47,73,.10); }
+    .top-medal { font-size:23px; }
+    .top-bot-copy { min-width:0; flex:1; display:flex; flex-direction:column; gap:3px; }
+    .top-bot-copy b { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:14px; }
+    .top-bot-copy small { color:var(--blue-800); font-size:12px; font-weight:900; }
+    .top-open { color:var(--blue-700); font-size:12px; font-weight:900; white-space:nowrap; }
+    .ranking-details { margin-top:12px; padding:0 0 2px; }
+    .ranking-details summary { cursor:pointer; padding:12px 15px; border-radius:14px; background:var(--blue-50); border:1px solid var(--blue-100); color:var(--blue-800); font-size:13px; font-weight:900; }
+    .ranking-details[open] summary { margin-bottom:12px; }
+    .catalog-summary { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin:0 0 14px; }
+    .catalog-summary > div { padding:14px 16px; border-radius:16px; background:linear-gradient(135deg,#fff,var(--blue-50)); border:1px solid rgba(14,165,233,.12); }
+    .catalog-summary strong { display:block; color:var(--blue-800); font-size:21px; line-height:1; letter-spacing:-.04em; }
+    .catalog-summary span { display:block; margin-top:6px; color:var(--slate-600); font-size:12px; font-weight:800; }
+    .catalog-filter-zone { display:flex; align-items:center; flex-wrap:wrap; gap:8px; padding:0 2px; margin:-4px 0 12px; }
+    .filter-label { color:var(--slate-600); font-size:12px; font-weight:900; margin-right:3px; }
+    .catalog-filter { border:1px solid var(--blue-100); background:#fff; color:var(--blue-800); border-radius:999px; padding:7px 10px; cursor:pointer; font:inherit; font-size:12px; font-weight:900; transition:.18s; }
+    .catalog-filter:hover, .catalog-filter.active { background:var(--blue-700); border-color:var(--blue-700); color:#fff; }
+    .catalog-status-legend { display:flex; flex-wrap:wrap; gap:7px 14px; padding:11px 14px; margin:0 0 16px; border-radius:14px; background:rgba(255,255,255,.72); border:1px solid rgba(14,165,233,.12); color:var(--slate-600); font-size:12px; }
+    .catalog-status-legend b { color:var(--blue-800); }
+    .bot .bot-description { flex:initial; }
+    .bot .when-use { margin-top:8px; color:var(--slate-700); font-size:12px; line-height:1.42; flex:1; }
+    .bot .when-use strong { color:var(--blue-800); }
+
+    @media (max-width:1080px) {
+      .top-bots-grid { grid-template-columns:1fr; }
+      .catalog-summary { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    }
+    @media (max-width:780px) {
+      .metrics-meta { flex-direction:column; }
+      .metrics-meta span { width:100%; }
+      .top-bots-title { align-items:flex-start; flex-direction:column; }
+      .catalog-summary { grid-template-columns:1fr; }
+      .catalog-filter-zone { align-items:flex-start; flex-direction:column; }
+      .filter-label { margin-bottom:2px; }
+      .catalog-status-legend { flex-direction:column; }
+    }
+    @media print {
+      .catalog-toolbar, .catalog-filter-zone, .catalog-status-legend, .metrics-meta { display:none; }
+      .top-bot-card { box-shadow:none; }
+      .ranking-details { display:none; }
+    }
+</style>
+</head>
+<body>
+<header class="topbar">
+<nav class="nav">
+<div class="brand"><div class="brand-mark">SAI</div><div>TA | IHM <small>Stefanini · Automação aplicada à engenharia</small></div></div>
+<div class="navlinks">
+<a href="#okr">OKR KR1</a><a href="#uso">Uso</a><a href="#timeline">Evolução</a><a href="#bots">Bots</a><a href="#workspaces">Workspaces</a><a href="#ferramentas">Ferramentas</a><a href="#boas-praticas">Boas práticas</a><a href="#roadmap">Roadmap</a><a href="#governanca">Governança</a>
+</div>
+</nav>
+</header>
+<section class="hero">
+<div class="hero-inner">
+<div>
+<div class="eyebrow">Roadmap executivo · OKR · TA | IHM</div>
+<h1>Acompanhamento do <span>SAI</span> na engenharia de automação</h1>
+<p>Material de acompanhamento do SAI na TA | IHM, com foco no KR1: ampliar o uso de IA nos projetos, mantendo organização técnica, segurança da informação e validação de engenharia.</p>
+<div class="hero-actions">
+<a class="btn btn-primary" href="#bots">Acessar catálogo de bots</a>
+<a class="btn btn-secondary" href="#roadmap">Ver Roadmap</a>
+<a class="btn btn-secondary" href="javascript:window.print()">Imprimir / Salvar PDF</a>
+</div>
+</div>
+<aside class="hero-panel">
+<div class="panel-title"><h2>Onde estamos agora</h2><span class="status-pill">Em expansão</span></div>
+<div class="metric-grid">
+<div class="metric"><strong>25 / 25</strong><span>Bots com acesso direto já vinculados</span></div>
+<div class="metric"><strong>2.193</strong><span>Usos acumulados identificados pelo ícone 🔥</span></div>
+<div class="metric"><strong>20 / 59</strong><span>Projetos com IA vs. meta KR1</span></div>
+<div class="metric"><strong>27,4%</strong><span>Cobertura atual sobre 73 projetos</span></div>
+</div>
+</aside>
+</div>
+</section>
+<main>
+<section id="resumo">
+<div class="section-head">
+<div><div class="section-kicker">Resumo executivo</div><h2 class="section-title">Resumo do andamento</h2></div>
+<p>O trabalho começou com bots técnicos por tecnologia e passou a apoiar também projetos, documentação, Workspaces e orientações práticas de uso do SAI na rotina da engenharia.</p>
+</div>
+<div class="grid-3">
+<article class="card summary-card"><div class="icon">🤖</div><h3>Bots por tecnologia</h3><p>Ferramentas organizadas por tecnologia e finalidade, apoiando consultas técnicas, desenvolvimento, documentação e troubleshooting.</p></article>
+<article class="card summary-card"><div class="icon">🧩</div><h3>Workspaces por projeto</h3><p>Ambientes organizados por projeto, reunindo documentação, ferramentas aplicáveis e informações de contexto para reduzir o tempo de busca do time.</p></article>
+<article class="card summary-card"><div class="icon">🔐</div><h3>Uso seguro e com critério</h3><p>Priorização do ambiente corporativo, com bases controladas, cuidado com informações sensíveis e validação técnica antes de qualquer aplicação prática.</p></article>
+<article class="card summary-card"><div class="icon">⚙️</div><h3>Qualidade das respostas</h3><p>Ajustes nos prompts para respostas mais objetivas, melhor aderência à documentação e respeito a produto, versão e contexto técnico.</p></article>
+<article class="card summary-card"><div class="icon">📚</div><h3>Conhecimento reaproveitável</h3><p>Organização de documentos, aprendizados de projeto e soluções recorrentes para reduzir dependência de conhecimento informal.</p></article>
+<article class="card summary-card"><div class="icon">🛠️</div><h3>Ferramentas de engenharia</h3><p>Ferramentas de apoio para organizar documentação técnica complexa em dados mais fáceis de consultar, revisar e reutilizar.</p></article>
+</div>
+</section>
+<section id="okr">
+<div class="section-head">
+<div><div class="section-kicker">OKR oficial</div><h2 class="section-title">KR1 · Utilização de IA em 80% dos projetos</h2></div>
+<p>O acompanhamento foi simplificado em um KR principal: medir a adoção formal do uso de IA nos projetos da TA | IHM.</p>
+</div>
+<div class="card okr">
+<div class="okr-title"><div><h3>Objetivo: ampliar o uso prático do SAI nos projetos da TA | IHM</h3><p>Critério considerado: projetos com uso formalmente mapeado de IA para apoio técnico, documentação, troubleshooting, engenharia, análise ou organização de conhecimento.</p></div><span class="okr-badge">KR1 · 80%</span></div>
+<div class="kr"><strong>KR 1 · Utilização</strong><p>Alcançar uso de IA em <b>80% dos 73 projetos</b>, o que representa <b>59 projetos com uso mapeado</b>.</p><span class="status progress">Em expansão</span></div>
+<div class="okr-dashboard">
+<div class="card okr-progress-card">
+<h4>Situação atual do KR1</h4>
+<p>Seguindo o critério de acompanhamento da auditoria interna, existem hoje <b>20 projetos formalmente mapeados com uso de IA</b>. Para alcançar a meta de 80%, o número precisa chegar a <b>59 projetos</b>. Portanto, ainda precisamos registrar mais <b>39 projetos</b>.</p>
+<div class="progress-wrap">
+<div class="progress-label"><span>Cobertura atual: 20 de 73 projetos</span><span>27,4%</span></div>
+<div class="progress-track"><div class="progress-fill"></div></div>
+</div>
+<div class="formula"><b>Cálculo:</b> 73 projetos × 80% = 58,4 → meta arredondada para <b>59 projetos</b>. Base formal atual: 20 / 73 = <b>27,4%</b>. Atingimento da meta: 20 / 59 = <b>33,9%</b>.</div>
+</div>
+<div class="card okr-progress-card">
+<h4>Próximo movimento</h4>
+<p>Para avançar no KR1, a recomendação é priorizar projetos ativos, indicar os bots aplicáveis, criar Workspace quando houver ganho claro e registrar uma evidência simples de uso. Sabemos que o uso real já é maior no dia a dia; o ponto agora é formalizar esse uso no acompanhamento.</p>
+<div class="calc-grid" style="grid-template-columns:1fr 1fr">
+<div class="calc"><strong>39</strong><span>Projetos restantes para a meta</span></div>
+<div class="calc"><strong>33,9%</strong><span>Atingimento da meta KR1</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="uso">
+<div class="section-head">
+<div><div class="section-kicker">Métricas de uso</div><h2 class="section-title">Uso observado nos cards da SAI Library</h2></div>
+<p>Métricas coletadas do catálogo SAI Library em 22/06/2026, usando o indicador 🔥 visível em cada card. Curtidas não fazem parte deste acompanhamento.</p>
+</div>
+<div class="card usage-card">
+<div class="usage-grid">
+<div class="usage-kpi"><strong>2.193</strong><span>Usos acumulados identificados pelo 🔥</span></div>
+<div class="usage-kpi"><strong>25</strong><span>Ferramentas e temas considerados</span></div>
+<div class="usage-kpi"><strong>553</strong><span>Maior volume individual: WinCC OA</span></div>
+</div><div aria-label="Referência das métricas de uso" class="metrics-meta">
+<span><b>Atualização:</b> 22/06/2026</span>
+<span><b>Fonte:</b> cards da SAI Library</span>
+<span><b>Critério:</b> indicador 🔥</span>
+<span><b>Acessos:</b> 25 / 25 vinculados</span>
+</div><div aria-label="Bots mais acionados" class="top-bots"><div class="top-bots-title"><span>Em destaque</span><h3>Bots mais acionados no catálogo</h3></div><div class="top-bots-grid"><a class="top-bot-card" href="https://sai-library.saiapplications.com/explorer?template=69cc2453f219c356743223b2&amp;conversationId=6a397cd3702e6c2ef70916e9" rel="noopener noreferrer" target="_blank" title="Abrir WinCC OA no SAI"><span class="top-medal">🥇</span><span class="top-bot-copy"><b>WinCC OA</b><small>🔥 553 usos</small></span><span class="top-open">Abrir ↗</span></a><a class="top-bot-card" href="https://sai-library.saiapplications.com/explorer?template=69cd745e07699d636e5f76dc&amp;conversationId=6a397c67702e6c2ef7091677" rel="noopener noreferrer" target="_blank" title="Abrir Excel no SAI"><span class="top-medal">🥈</span><span class="top-bot-copy"><b>Excel</b><small>🔥 546 usos</small></span><span class="top-open">Abrir ↗</span></a><a class="top-bot-card" href="https://sai-library.saiapplications.com/explorer?template=69fe139e3510fe8ef20c9cec&amp;conversationId=69fe242d897b9f601166d60e" rel="noopener noreferrer" target="_blank" title="Abrir AVEVA Desenvolvimento no SAI"><span class="top-medal">🥉</span><span class="top-bot-copy"><b>AVEVA Desenvolvimento</b><small>🔥 292 usos</small></span><span class="top-open">Abrir ↗</span></a></div></div>
+<div class="table-wrap">
+<table class="usage-table">
+<thead><tr><th>#</th><th>Ferramenta / Bot</th><th>Uso 🔥</th><th>Observação</th></tr></thead>
+<tbody>
+<tr><td><span class="rank">1</span></td><td>IHM | TA | SIEMENS | WINCC OA | v2</td><td>553</td><td>Maior volume de uso observado</td></tr>
+<tr><td><span class="rank">2</span></td><td>IHM | TA | UTILIDADES | EXCEL | Desenvolvimento | v2</td><td>546</td><td>Uso relevante em planilhas, organização e apoio à engenharia</td></tr>
+<tr><td><span class="rank">3</span></td><td>IHM | TA | AVEVA | Desenvolvimento | v3</td><td>292</td><td>Uso técnico relevante com base AVEVA ampliada</td></tr>
+<tr><td><span class="rank">4</span></td><td>IHM | TA | PROJETOS | KSA | DOCUMENTAÇÃO | v0</td><td>147</td><td>Uso por projeto/documentação</td></tr>
+<tr><td><span class="rank">5</span></td><td>IHM | TA | PROJETOS | SIRENES VALE | DOCUMENTAÇÃO | v2</td><td>136</td><td>Uso por projeto com boa aderência ao contexto</td></tr>
+<tr><td><span class="rank">6</span></td><td>IHM | TA | ABB - AC800M - 800xA | Desenvolvimento | v2</td><td>116</td><td>Utilização relevante em DCS/ABB</td></tr>
+<tr><td><span class="rank">7</span></td><td>IHM | TA | Elipse E3 | Desenvolvimento | v2</td><td>62</td><td>Supervisório Elipse</td></tr>
+<tr><td><span class="rank">8</span></td><td>IHM | TA | ROCKWELL / ALLEN-BRADLEY | Automação Industrial | v1</td><td>54</td><td>Base Rockwell em ajuste</td></tr>
+<tr><td><span class="rank">9</span></td><td>IHM | TA | PYTHON | OPC | AUTOMAÇÃO | v1</td><td>53</td><td>Automação, OPC e scripts</td></tr>
+<tr><td><span class="rank">10</span></td><td>IHM | TA | DCS | EMERSON | DELTA V | Desenvolvimento | v1</td><td>48</td><td>DCS/DeltaV</td></tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</tbody>
+</table>
+</div><details class="ranking-details"><summary>Ver ranking completo — 25 ferramentas</summary><div class="table-wrap ranking-full"><table class="usage-table"><thead><tr><th>#</th><th>Ferramenta / Bot</th><th>Uso 🔥</th><th>Observação</th></tr></thead><tbody><tr><td><span class="rank">11</span></td><td>IHM | TA | PROJETOS | VALE WINCC OA | DOCUMENTAÇÃO | v0</td><td>38</td><td>Bot por projeto</td></tr><tr><td><span class="rank">12</span></td><td>IHM | TA | SIEMENS | STEP7 V5.x | S7300/400 | Desenvolvimento | v1</td><td>35</td><td>Siemens legado</td></tr><tr><td><span class="rank">13</span></td><td>IHM | TA | Elipse E3 Power | Desenvolvimento | v1</td><td>18</td><td>Elétrica / supervisório</td></tr><tr><td><span class="rank">14</span></td><td>IHM | TA | GE PACSystems (Emerson) | Desenvolvimento | v2</td><td>13</td><td>PLC GE/Emerson</td></tr><tr><td><span class="rank">15</span></td><td>IHM | TA | SIEMENS | TIA PORTAL V10–V13 | Desenvolvimento | v1</td><td>12</td><td>Siemens TIA legado</td></tr><tr><td><span class="rank">16</span></td><td>IHM | TA | ROCKWELL | BREWMAXX | Desenvolvimento | v2</td><td>12</td><td>Processo / Plant iT</td></tr><tr><td><span class="rank">17</span></td><td>IHM | Centro de Informações | Suporte Interno | v1</td><td>12</td><td>Base de suporte interno</td></tr><tr><td><span class="rank">18</span></td><td>IHM | TA | SIEMENS | TIA PORTAL V14–V15.1 | Desenvolvimento | v1</td><td>11</td><td>Siemens TIA intermediário</td></tr><tr><td><span class="rank">19</span></td><td>IHM | TA | GE Vernova Proficy iFIX | Desenvolvimento | v1</td><td>10</td><td>Supervisório GE</td></tr><tr><td><span class="rank">20</span></td><td>IHM | TA | ABB - AC500 - Automation Builder | Desenvolvimento | v1</td><td>6</td><td>PLC ABB</td></tr><tr><td><span class="rank">21</span></td><td>IHM | TA | SIEMENS | TIA PORTAL V16–V21 | Desenvolvimento | v1</td><td>5</td><td>Siemens atual</td></tr><tr><td><span class="rank">22</span></td><td>IHM | TA | WAGO | PLC / I/O / CODESYS | Desenvolvimento | v1</td><td>5</td><td>WAGO / CODESYS</td></tr><tr><td><span class="rank">23</span></td><td>IHM | TA | ALTUS - NEXTO - MASTERTOOL IEC | Desenvolvimento | v2</td><td>5</td><td>Altus Nexto</td></tr><tr><td><span class="rank">24</span></td><td>IHM | TA | IGNITION | DESENVOLVIMENTO | v1</td><td>2</td><td>Ignition / SCADA</td></tr><tr><td><span class="rank">25</span></td><td>IHM | TA | PROSOFT | DESENVOLVIMENTO | v1</td><td>2</td><td>Comunicação industrial / gateways</td></tr></tbody></table></div></details>
+<div class="note">Leitura operacional do catálogo em 22/06/2026. O indicador 🔥 representa o volume exibido em cada card no momento da coleta; ele deve ser atualizado periodicamente para manter o painel aderente ao catálogo.</div>
+</div>
+</section>
+<section id="timeline">
+<div class="section-head">
+<div><div class="section-kicker">Linha do tempo</div><h2 class="section-title">Evolução desde o início</h2></div>
+<p>Resumo dos comunicados enviados ao time, organizado em uma visão única de acompanhamento.</p>
+</div>
+<div class="timeline">
+<div class="tl-item"><div class="tl-dot">1</div><article class="card tl-card"><h3>Início da SAI Library</h3><p>Orientação de acesso, uso da busca, favoritos e primeiros bots técnicos no catálogo: ABB AC800M/800xA, ABB AC500, Altus Nexto e Elipse E3.</p><div class="tag-row"><span class="tag">Acesso via busca</span><span class="tag">Favoritos ❤️</span><span class="tag">Bots iniciais</span></div></article></div>
+<div class="tl-item"><div class="tl-dot">2</div><article class="card tl-card"><h3>Boas práticas e segurança</h3><p>Alinhamento de que IA é apoio à engenharia, não substituição da análise técnica. Reforço de confidencialidade, validação e uso preferencial do SAI.</p><div class="tag-row"><span class="tag">Validação obrigatória</span><span class="tag">Dados protegidos</span><span class="tag">Ambiente corporativo</span></div></article></div>
+<div class="tl-item"><div class="tl-dot">3</div><article class="card tl-card"><h3>Expansão dos bots e uso mobile</h3><p>Entrada de novos bots, como Python OPC, DeltaV, iFIX, Elipse Power, GE PACSystems, WinCC OA e utilidades, além do acesso pelo celular.</p><div class="tag-row"><span class="tag">Mobile</span><span class="tag">Novos bots</span><span class="tag">Uso em campo</span></div></article></div>
+<div class="tl-item"><div class="tl-dot">4</div><article class="card tl-card"><h3>Workspaces em uso nos projetos</h3><p>Organização por projeto, com documentação centralizada, ferramentas específicas e contexto técnico disponível para consulta.</p><div class="tag-row"><span class="tag">3+ projetos</span><span class="tag">Onboarding</span><span class="tag">Menos busca manual</span></div></article></div>
+<div class="tl-item"><div class="tl-dot">5</div><article class="card tl-card"><h3>Siemens, AVEVA e qualidade das respostas</h3><p>Criação e refinamento de bots Siemens, AVEVA e WinCC OA, com ajustes de prompt para melhorar objetividade e aderência técnica.</p><div class="tag-row"><span class="tag">STEP7</span><span class="tag">TIA V10–V21</span><span class="tag">AVEVA</span><span class="tag">WinCC OA</span></div></article></div>
+<div class="tl-item"><div class="tl-dot">6</div><article class="card tl-card"><h3>Base técnica da equipe</h3><p>Organização de aprendizados reais, troubleshooting, boas práticas, conversas técnicas e documentações por tecnologia.</p><div class="tag-row"><span class="tag">Lições aprendidas</span><span class="tag">Base TA | IHM</span><span class="tag">Conhecimento prático</span></div></article></div>
+<div class="tl-item"><div class="tl-dot">7</div><article class="card tl-card"><h3>Tokens, modelos e MCP</h3><p>Melhor entendimento sobre custo, velocidade, uso de modelos e busca direcionada, com evolução perceptível nos bots Siemens com MCP.</p><div class="tag-row"><span class="tag">Menos tokens</span><span class="tag">Mais velocidade</span><span class="tag">MCP Siemens</span><span class="tag">GPT-5.5 / Claude</span></div></article></div>
+<div class="tl-item"><div class="tl-dot">8</div><article class="card tl-card"><h3>Ferramentas para documentação técnica</h3><p>Conversor de projeto elétrico PDF para Excel, DWG para DXF, analisador elétrico e testes com documentação HTML para melhorar a leitura técnica.</p><div class="tag-row"><span class="tag">PDF → Excel</span><span class="tag">DWG → DXF</span><span class="tag">HTML técnico</span><span class="tag">Análise de I/O</span></div></article></div>
+</div>
+</section>
+<section id="bots">
+<div class="section-head">
+<div><div class="section-kicker">Catálogo</div><h2 class="section-title">Bots e frentes técnicas</h2></div>
+<p>Catálogo consolidado com métricas de uso e acesso direto aos bots publicados na SAI Library.</p>
+</div>
+<div class="catalog-summary">
+<div><strong>25</strong><span>bots publicados</span></div>
+<div><strong>25 / 25</strong><span>acessos diretos</span></div>
+<div><strong>2.193</strong><span>usos observados</span></div>
+<div><strong>22/06</strong><span>última coleta</span></div>
+</div><div class="catalog-toolbar"><label for="botSearch">Localizar um bot:<input id="botSearch" placeholder="Ex.: Siemens, PLC, documentação, Excel..." type="search"/></label><small>25 itens organizados pelo uso observado</small></div><div class="catalog-filter-zone"><span class="filter-label">Filtrar por frente:</span><button class="catalog-filter active" data-filter="all" type="button">Todos</button><button class="catalog-filter" data-filter="siemens" type="button">Siemens</button><button class="catalog-filter" data-filter="scada" type="button">SCADA</button><button class="catalog-filter" data-filter="plc-dcs" type="button">PLC / DCS</button><button class="catalog-filter" data-filter="projetos" type="button">Projetos</button><button class="catalog-filter" data-filter="utilidades" type="button">Utilidades</button><button class="catalog-filter" data-filter="comunicacao" type="button">Comunicação</button></div><div class="catalog-status-legend"><span><b>Legenda:</b></span><span>✅ Ativo: disponível para uso</span><span>🧪 Teste: em validação</span><span>🚧 Em evolução: cobertura sendo ampliada</span></div><div class="bot-board">
+<article class="bot" data-bot="wincc-oa" data-category="scada">
+<div class="type">SCADA</div>
+<h3>WinCC OA</h3>
+<p class="bot-description">Arquitetura SCADA, integração com PLCs, documentação HTML e troubleshooting.</p><p class="when-use"><strong>Quando usar: </strong>dúvidas de arquitetura SCADA, scripts, integração com PLCs e troubleshooting.</p><div class="bot-stats"><span class="bot-use">🔥 553 usos</span></div>
+<a class="bot-link" data-link-key="wincc-oa" href="https://sai-library.saiapplications.com/explorer?template=69cc2453f219c356743223b2&amp;conversationId=6a397cd3702e6c2ef70916e9" rel="noopener noreferrer" target="_blank" title="Abrir o bot WinCC OA no SAI">Abrir bot no SAI ↗</a>
+<footer><span class="mini-status active">Ativo</span><span>🖥️</span></footer>
+</article>
+<article class="bot" data-bot="excel" data-category="utilidades">
+<div class="type">Utilidades</div>
+<h3>Excel</h3>
+<p class="bot-description">Planilhas, macros, VBA, organização de dados e apoio a análises.</p><p class="when-use"><strong>Quando usar: </strong>planilhas, fórmulas, VBA, validação de dados e organização de informações técnicas.</p><div class="bot-stats"><span class="bot-use">🔥 546 usos</span></div>
+<a class="bot-link" data-link-key="excel" href="https://sai-library.saiapplications.com/explorer?template=69cd745e07699d636e5f76dc&amp;conversationId=6a397c67702e6c2ef7091677" rel="noopener noreferrer" target="_blank" title="Abrir o bot Excel no SAI">Abrir bot no SAI ↗</a>
+<footer><span class="mini-status active">Ativo</span><span>📊</span></footer>
+</article>
+<article class="bot" data-bot="aveva" data-category="scada">
+<div class="type">SCADA / AVEVA</div>
+<h3>AVEVA Desenvolvimento</h3>
+<p class="bot-description">System Platform, OMI, Historian, InTouch OMI, runtime, deploy e alarmes.</p><p class="when-use"><strong>Quando usar: </strong>System Platform, OMI, Historian, InTouch OMI, deploy e diagnóstico de runtime.</p><div class="bot-stats"><span class="bot-use">🔥 292 usos</span></div>
+<a class="bot-link" data-link-key="aveva" href="https://sai-library.saiapplications.com/explorer?template=69fe139e3510fe8ef20c9cec&amp;conversationId=69fe242d897b9f601166d60e" rel="noopener noreferrer" target="_blank" title="Abrir o bot AVEVA Desenvolvimento no SAI">Abrir bot no SAI ↗</a>
+<footer><span class="mini-status active">Ativo</span><span>🖥️</span></footer>
+</article>
+<article class="bot" data-bot="ksa-documentacao" data-category="projetos">
+<div class="type">Projetos</div>
+<h3>KSA · Documentação</h3>
+<p class="bot-description">Leitura, organização e revisão de documentos vinculados ao projeto KSA.</p><p class="when-use"><strong>Quando usar: </strong>localizar, interpretar ou organizar documentos do projeto KSA.</p><div class="bot-stats"><span class="bot-use">🔥 147 usos</span></div>
+<a class="bot-link" data-link-key="ksa-documentacao" href="https://sai-library.saiapplications.com/explorer?template=6a0364a1b37b344240bd16d1" rel="noopener noreferrer" target="_blank" title="Abrir o bot KSA · Documentação no SAI">Abrir bot no SAI ↗</a>
+<footer><span class="mini-status active">Ativo</span><span>📁</span></footer>
+</article>
+<article class="bot" data-bot="sirenes-vale-documentacao" data-category="projetos">
+<div class="type">Projetos</div>
+<h3>Sirenes Vale · Documentação</h3>
+<p class="bot-description">Apoio técnico e documental direcionado ao contexto do projeto.</p><p class="when-use"><strong>Quando usar: </strong>consultar documentação, decisões e contexto técnico do projeto de sirenes.</p><div class="bot-stats"><span class="bot-use">🔥 136 usos</span></div>
+<a class="bot-link" data-link-key="sirenes-vale-documentacao" href="https://sai-library.saiapplications.com/explorer?template=69e12628387957cf2b193478&amp;conversationId=6a397cac6531a16671854e33" rel="noopener noreferrer" target="_blank" title="Abrir o bot Sirenes Vale · Documentação no SAI">Abrir bot no SAI ↗</a>
+<footer><span class="mini-status active">Ativo</span><span>📁</span></footer>
+</article>
+<article class="bot" data-bot="abb-ac800m-800xa" data-category="plc-dcs">
+<div class="type">DCS / ABB</div>
+<h3>ABB AC800M / 800xA</h3>
+<p class="bot-description">Arquitetura, redundância, IEC 61131-3, DR e troubleshooting.</p><p class="when-use"><strong>Quando usar: </strong>arquitetura DCS, redundância, IEC 61131-3, DR e troubleshooting ABB.</p><div class="bot-stats"><span class="bot-use">🔥 116 usos</span></div>
+<a class="bot-link" data-link-key="abb-ac800m-800xa" href="https://sai-library.saiapplications.com/explorer?template=69c56b83f219c356740cafc7&amp;conversationId=6a397cba702e6c2ef70916c7" rel="noopener noreferrer" target="_blank" title="Abrir o bot ABB AC800M / 800xA no SAI">Abrir bot no SAI ↗</a>
+<footer><span class="mini-status active">Ativo</span><span>🏭</span></footer>
+</article>
+<article class="bot" data-bot="elipse-e3" data-category="scada">
+<div class="type">SCADA</div>
+<h3>Elipse E3</h3>
+<p class="bot-description">Supervisório, diferentes versões, telas, documentação e suporte técnico.</p><p class="when-use"><strong>Quando usar: </strong>telas, alarmes, históricos, scripts, banco de dados e desenvolvimento SCADA.</p><div class="bot-stats"><span class="bot-use">🔥 62 usos</span></div>
+<a class="bot-link" data-link-key="elipse-e3" href="https://sai-library.saiapplications.com/explorer?template=69cbf08ad64c2b3a4e786bbb&amp;conversationId=69d929ef4908722b4e195c27" rel="noopener noreferrer" target="_blank" title="Abrir o bot Elipse E3 no SAI">Abrir bot no SAI ↗</a>
+<footer><span class="mini-status active">Ativo</span><span>🖥️</span></footer>
+</article>
+<article class="bot" data-bot="rockwell" data-category="plc-dcs">
+<div class="type">PLC</div>
+<h3>Rockwell / Allen-Bradley</h3>
+<p class="bot-description">Studio 5000, Logix, análise de lógica, arquitetura e revisão técnica.</p><p class="when-use"><strong>Quando usar: </strong>Studio 5000, ControlLogix, CompactLogix, lógica, tags, AOIs e comunicação.</p><div class="bot-stats"><span class="bot-use">🔥 54 usos</span></div>
+<a class="bot-link" data-link-key="rockwell" href="https://sai-library.saiapplications.com/explorer?template=6a19eeed9501b07c1d73ee85&amp;conversationId=6a39626a6531a1667185247" rel="noopener noreferrer" target="_blank" title="Abrir o bot Rockwell / Allen-Bradley no SAI">Abrir bot no SAI ↗</a>
+<footer><span class="mini-status dev">Em evolução</span><span>⚙️</span></footer>
+</article>
+<article class="bot" data-bot="python-opc" data-category="utilidades">
+<div class="type">Utilidades</div>
+<h3>Python + OPC + Automação</h3>
+<p class="bot-description">Integração OPC, XML/HTML técnico, análise de projetos e automação de engenharia.</p><p class="when-use"><strong>Quando usar: </strong>integração OPC, scripts, XML/HTML técnico e automação de engenharia.</p><div class="bot-stats"><span class="bot-use">🔥 53 usos</span></div>
+<a class="bot-link" data-link-key="python-opc" href="https://sai-library.saiapplications.com/explorer?template=69d3d8cf1b345ef2235ed863&amp;conversationId=69d9290d2c0485091383106e" rel="noopener noreferrer" target="_blank" title="Abrir o bot Python + OPC + Automação no SAI">Abrir bot no SAI ↗</a>
+<footer><span class="mini-status active">Ativo</span><span>🐍</span></footer>
+</article>
+<article class="bot" data-bot="deltav" data-category="plc-dcs">
+<div class="type">DCS / Processo</div>
+<h3>Emerson DeltaV</h3>
+<p class="bot-description">Módulos, estratégias, alarmes, arquitetura e suporte a projetos DCS.</p><p class="when-use"><strong>Quando usar: </strong>módulos, estratégias, alarmes, arquitetura e troubleshooting DeltaV.</p><div class="bot-stats"><span class="bot-use">🔥 48 usos</span></div>
+<a class="bot-link" data-link-key="deltav" href="https://sai-library.saiapplications.com/explorer?template=69d3e39a1b345ef2235f389e&amp;conversationId=69d9299f2c048509138314c2" rel="noopener noreferrer" target="_blank" title="Abrir o bot Emerson DeltaV no SAI">Abrir bot no SAI ↗</a>
+<footer><span class="mini-status active">Ativo</span><span>🏭</span></footer>
+</article>
+<article class="bot" data-bot="vale-wincc-oa-documentacao" data-category="scada projetos">
+<div class="type">Projetos</div>
+<h3>Vale WinCC OA · Documentação</h3>
+<p class="bot-description">Consulta estruturada da documentação e do contexto técnico do projeto.</p><p class="when-use"><strong>Quando usar: </strong>consultar documentos e contexto específico do projeto Vale WinCC OA.</p><div class="bot-stats"><span class="bot-use">🔥 38 usos</span></div>
+<a class="bot-link" data-link-key="vale-wincc-oa-documentacao" href="https://sai-library.saiapplications.com/explorer?template=6a0621156976b27586349a5e&amp;conversationId=6a397ce76531a16671854e63" rel="noopener noreferrer" target="_blank" title="Abrir o bot Vale WinCC OA · Documentação no SAI">Abrir bot no SAI ↗</a>
+<footer><span class="mini-status active">Ativo</span><span>📁</span></footer>
+</article>
+<article class="bot" data-bot="step7-v5" data-category="siemens">
+<div class="type">Siemens</div>
+<h3>STEP7 V5.x · S7-300/400</h3>
+<p class="bot-description">Legado Siemens, STL/LAD/FBD, diagnóstico, hardware e comunicação.</p><p class="when-use"><strong>Quando usar: </strong>projetos Siemens legados, STL/LAD/FBD, hardware e diagnóstico.</p><div class="bot-stats"><span class="bot-use">🔥 35 usos</span></div>
+<a class="bot-link" data-link-key="step7-v5" href="https://sai-library.saiapplications.com/explorer?template=69ea43c3623ef0cceca73db4&amp;conversationId=69eba1887324348d30f6e6ac" rel="noopener noreferrer" target="_blank" title="Abrir o bot STEP7 V5.x · S7-300/400 no SAI">Abrir bot no SAI ↗</a>
+<footer><span class="mini-status active">Ativo</span><span>⚙️</span></footer>
+</article>
+<article class="bot" data-bot="elipse-power" data-category="scada">
+<div class="type">SCADA</div>
+<h3>Elipse E3 Power</h3>
+<p class="bot-description">Supervisório aplicado à elétrica, documentação e suporte técnico.</p><p class="when-use"><strong>Quando usar: </strong>supervisório elétrico, telas, alarmes e análise de aplicações Elipse Power.</p><div class="bot-stats"><span class="bot-use">🔥 18 usos</span></div>
+<a class="bot-link" data-link-key="elipse-power" href="https://sai-library.saiapplications.com/explorer?template=69d7d01ef23db9ac00966f76&amp;conversationId=69d92a784908722b4e195eff" rel="noopener noreferrer" target="_blank" title="Abrir o bot Elipse E3 Power no SAI">Abrir bot no SAI ↗</a>
+<footer><span class="mini-status active">Ativo</span><span>⚡</span></footer>
+</article>
+<article class="bot" data-bot="ge-pacsystems" data-category="plc-dcs">
+<div class="type">PLC</div>
+<h3>GE PACSystems</h3>
+<p class="bot-description">Desenvolvimento, diagnóstico e suporte técnico em PLCs GE/Emerson.</p><p class="when-use"><strong>Quando usar: </strong>desenvolvimento, diagnóstico e suporte em PLCs GE/Emerson.</p><div class="bot-stats"><span class="bot-use">🔥 13 usos</span></div>
+<a class="bot-link" data-link-key="ge-pacsystems" href="https://sai-library.saiapplications.com/explorer?template=69e24271fa6e1e7d79b1d604&amp;conversationId=69e243f3fa6e1e7d79b1ddfd" rel="noopener noreferrer" target="_blank" title="Abrir o bot GE PACSystems no SAI">Abrir bot no SAI ↗</a>
+<footer><span class="mini-status active">Ativo</span><span>⚙️</span></footer>
+</article>
+<article class="bot" data-bot="tia-v10-v13" data-category="siemens">
+<div class="type">Siemens</div>
+<h3>TIA Portal V10–V13</h3>
+<p class="bot-description">Programação, WinCC, integração e suporte a versões antigas do TIA.</p><p class="when-use"><strong>Quando usar: </strong>projetos Siemens legados em TIA, PLC, HMI e integração WinCC.</p><div class="bot-stats"><span class="bot-use">🔥 12 usos</span></div>
+<a class="bot-link" data-link-key="tia-v10-v13" href="https://sai-library.saiapplications.com/explorer?template=69eb9f61eb3a3212ba1ca346&amp;conversationId=69eba19ceb3a3212ba1ca9c9" rel="noopener noreferrer" target="_blank" title="Abrir o bot TIA Portal V10–V13 no SAI">Abrir bot no SAI ↗</a>
+<footer><span class="mini-status active">Ativo</span><span>⚙️</span></footer>
+</article>
+<article class="bot" data-bot="brewmaxx" data-category="plc-dcs">
+<div class="type">Processo</div>
+<h3>Brewmaxx / Plant iT</h3>
+<p class="bot-description">Receitas, automação de processo, integração industrial e operação.</p><p class="when-use"><strong>Quando usar: </strong>receitas, processo, integração industrial e operação Brewmaxx / Plant iT.</p><div class="bot-stats"><span class="bot-use">🔥 12 usos</span></div>
+<a class="bot-link" data-link-key="brewmaxx" href="https://sai-library.saiapplications.com/explorer?template=6a0cabe66976b275863fef67&amp;conversationId=6a397cd9702e6c2ef70916eb" rel="noopener noreferrer" target="_blank" title="Abrir o bot Brewmaxx / Plant iT no SAI">Abrir bot no SAI ↗</a>
+<footer><span class="mini-status dev">Em evolução</span><span>🍺</span></footer>
+</article>
+<article class="bot" data-bot="centro-informacoes" data-category="utilidades">
+<div class="type">Utilidades</div>
+<h3>Centro de Informações</h3>
+<p class="bot-description">Base de apoio para dúvidas recorrentes, orientações e suporte interno.</p><p class="when-use"><strong>Quando usar: </strong>consultas de suporte interno e informações organizacionais da área.</p><div class="bot-stats"><span class="bot-use">🔥 12 usos</span></div>
+<a class="bot-link" data-link-key="centro-informacoes" href="https://sai-library.saiapplications.com/explorer?template=6a16f3526e55ca6e3b24ae45&amp;conversationId=6a397ccb702e6c2ef70916e3" rel="noopener noreferrer" target="_blank" title="Abrir o bot Centro de Informações no SAI">Abrir bot no SAI ↗</a>
+<footer><span class="mini-status active">Ativo</span><span>ℹ️</span></footer>
+</article>
+<article class="bot" data-bot="tia-v14-v15" data-category="siemens">
+<div class="type">Siemens</div>
+<h3>TIA Portal V14–V15.1</h3>
+<p class="bot-description">Expansão da linha Siemens para versões intermediárias.</p><p class="when-use"><strong>Quando usar: </strong>desenvolvimento Siemens intermediário, PLC, HMI e redes.</p><div class="bot-stats"><span class="bot-use">🔥 11 usos</span></div>
+<a class="bot-link" data-link-key="tia-v14-v15" href="https://sai-library.saiapplications.com/explorer?template=69f36efc4b33fbdc46edeb2a&amp;conversationId=69f38d374b33fbdc46ee3b39" rel="noopener noreferrer" target="_blank" title="Abrir o bot TIA Portal V14–V15.1 no SAI">Abrir bot no SAI ↗</a>
+<footer><span class="mini-status active">Ativo</span><span>⚙️</span></footer>
+</article>
+<article class="bot" data-bot="ifix" data-category="scada">
+<div class="type">SCADA</div>
+<h3>GE Vernova Proficy iFIX</h3>
+<p class="bot-description">Supervisório GE Vernova, desenvolvimento, troubleshooting e versões.</p><p class="when-use"><strong>Quando usar: </strong>desenvolvimento, runtime, tags, alarmes, scripts e troubleshooting iFIX.</p><div class="bot-stats"><span class="bot-use">🔥 10 usos</span></div>
+<a class="bot-link" data-link-key="ifix" href="https://sai-library.saiapplications.com/explorer?template=69d6764dea39f02f4bd6951b&amp;conversationId=69d929ff2c04850913831ec0" rel="noopener noreferrer" target="_blank" title="Abrir o bot GE Vernova Proficy iFIX no SAI">Abrir bot no SAI ↗</a>
+<footer><span class="mini-status active">Ativo</span><span>🖥️</span></footer>
+</article>
+<article class="bot" data-bot="abb-ac500" data-category="plc-dcs">
+<div class="type">PLC / ABB</div>
+<h3>ABB AC500</h3>
+<p class="bot-description">Automation Builder, programação ST/LD/FBD, arquitetura, integração Modbus/OPC/API, diagnóstico e boas práticas.</p><p class="when-use"><strong>Quando usar: </strong>Automation Builder, ST/LD/FBD, POUs, Tasks, Modbus, OPC e diagnóstico.</p><div class="bot-stats"><span class="bot-use">🔥 6 usos</span></div>
+<a class="bot-link" data-link-key="abb-ac500" href="https://sai-library.saiapplications.com/explorer?template=69cbcf2bd64c2b3a4e7699bf" rel="noopener noreferrer" target="_blank" title="Abrir o bot ABB AC500 no SAI">Abrir bot no SAI ↗</a>
+<footer><span class="mini-status active">Ativo</span><span>⚙️</span></footer>
+</article>
+<article class="bot" data-bot="tia-v16-v21" data-category="siemens">
+<div class="type">Siemens</div>
+<h3>TIA Portal V16–V21</h3>
+<p class="bot-description">PLC, WinCC, Profinet, Scalance, Motion e troubleshooting moderno.</p><p class="when-use"><strong>Quando usar: </strong>TIA atual, WinCC, Profinet, Scalance, Motion e troubleshooting.</p><div class="bot-stats"><span class="bot-use">🔥 5 usos</span></div>
+<a class="bot-link" data-link-key="tia-v16-v21" href="https://sai-library.saiapplications.com/explorer?template=69fe19c46b18f10891084ba7&amp;conversationId=69fe2456ae502bb71ad6157e" rel="noopener noreferrer" target="_blank" title="Abrir o bot TIA Portal V16–V21 no SAI">Abrir bot no SAI ↗</a>
+<footer><span class="mini-status active">Ativo</span><span>⚙️</span></footer>
+</article>
+<article class="bot" data-bot="wago" data-category="plc-dcs">
+<div class="type">PLC / I/O</div>
+<h3>WAGO / CODESYS</h3>
+<p class="bot-description">Controladores, módulos, configuração, comunicação, desenvolvimento, diagnóstico e boas práticas.</p><p class="when-use"><strong>Quando usar: </strong>controladores, I/O, CODESYS, configuração e comunicação WAGO.</p><div class="bot-stats"><span class="bot-use">🔥 5 usos</span></div>
+<a class="bot-link" data-link-key="wago" href="https://sai-library.saiapplications.com/explorer?template=6a19e1fa8c32041ba8a15e38&amp;conversationId=6a19f1349501b07c1d73f01f" rel="noopener noreferrer" target="_blank" title="Abrir o bot WAGO / CODESYS no SAI">Abrir bot no SAI ↗</a>
+<footer><span class="mini-status active">Ativo</span><span>⚙️</span></footer>
+</article>
+<article class="bot" data-bot="altus-nexto" data-category="plc-dcs">
+<div class="type">PLC</div>
+<h3>Altus Nexto</h3>
+<p class="bot-description">MasterTool IEC, IEC 61131-3, arquitetura e integração.</p><p class="when-use"><strong>Quando usar: </strong>MasterTool IEC, IEC 61131-3, arquitetura e integração Altus.</p><div class="bot-stats"><span class="bot-use">🔥 5 usos</span></div>
+<a class="bot-link" data-link-key="altus-nexto" href="https://sai-library.saiapplications.com/explorer?template=69cbe809d64c2b3a4e77cb66&amp;conversationId=6a397cee6531a16671854e6b" rel="noopener noreferrer" target="_blank" title="Abrir o bot Altus Nexto no SAI">Abrir bot no SAI ↗</a>
+<footer><span class="mini-status active">Ativo</span><span>⚙️</span></footer>
+</article>
+<article class="bot" data-bot="ignition" data-category="scada">
+<div class="type">SCADA</div>
+<h3>Ignition</h3>
+<p class="bot-description">Desenvolvimento, telas, tags, scripts, comunicação, módulos e troubleshooting.</p><p class="when-use"><strong>Quando usar: </strong>telas, tags, scripts, módulos, integração e troubleshooting Ignition.</p><div class="bot-stats"><span class="bot-use">🔥 2 usos</span></div>
+<a class="bot-link" data-link-key="ignition" href="https://sai-library.saiapplications.com/explorer?template=6a3327259f35f246c1ec97ec" rel="noopener noreferrer" target="_blank" title="Abrir o bot Ignition no SAI">Abrir bot no SAI ↗</a>
+<footer><span class="mini-status active">Ativo</span><span>🖥️</span></footer>
+</article>
+<article class="bot" data-bot="prosoft" data-category="comunicacao">
+<div class="type">Comunicação</div>
+<h3>ProSoft</h3>
+<p class="bot-description">Módulos, manuais, redes industriais, diagnósticos e troubleshooting.</p><p class="when-use"><strong>Quando usar: </strong>módulos de comunicação, protocolos, registradores e diagnóstico de redes industriais.</p><div class="bot-stats"><span class="bot-use">🔥 2 usos</span></div>
+<a class="bot-link" data-link-key="prosoft" href="https://sai-library.saiapplications.com/explorer?template=6a329a5b5e2fca8f1934e694" rel="noopener noreferrer" target="_blank" title="Abrir o bot ProSoft no SAI">Abrir bot no SAI ↗</a>
+<footer><span class="mini-status active">Ativo</span><span>🔌</span></footer>
+</article>
+<div class="catalog-empty" id="catalogEmpty">Nenhum bot localizado. Tente buscar por tecnologia, fornecedor, produto ou finalidade.</div></div>
+<div class="natural-note"><h3>25 acessos diretos vinculados</h3><p>Todos os bots listados nesta página possuem acesso direto. Salve os que você utiliza no dia a dia como favorito na SAI Library para facilitar as próximas consultas.</p></div>
+</section>
+<section id="workspaces">
+<div class="section-head">
+<div><div class="section-kicker">Workspaces</div><h2 class="section-title">Base técnica por projeto</h2></div>
+<p>O Workspace aproxima o SAI do contexto real do projeto, reduzindo busca manual e melhorando a organização técnica.</p>
+</div>
+<div class="two-col">
+<div class="card box"><h3>Antes do Workspace</h3><ul><li>Documentação dispersa em pastas, links e conversas.</li><li>Tempo alto para localizar informação técnica.</li><li>Dependência de conhecimento informal de pessoas-chave.</li><li>Uso do SAI sem contexto suficiente do projeto.</li><li>Onboarding mais lento em tecnologias e arquiteturas.</li></ul></div>
+<div class="card box"><h3>Depois do Workspace</h3><ul><li>Documentação e ferramentas centralizadas por projeto.</li><li>Bots e bases organizadas por contexto.</li><li>Consultas com mais contexto e aderência ao projeto.</li><li>Menor retrabalho e menor tempo de busca.</li><li>Ambiente organizado para engenharia, suporte e operação.</li></ul></div>
+</div>
+<div class="callout"><div><h3>Direcionamento recomendado</h3><p>Criar Workspace para projetos com volume relevante de documentação ou recorrência de dúvidas técnicas, incluindo documentos, responsáveis, bots aplicáveis e histórico de decisões.</p></div><a class="btn btn-primary" href="#roadmap">Ver ondas de expansão</a></div>
+</section>
+<section id="ferramentas">
+<div class="section-head">
+<div><div class="section-kicker">Ferramentas</div><h2 class="section-title">Documentação técnica em dados consultáveis</h2></div>
+<p>Uma frente importante é organizar a documentação técnica em formatos mais fáceis de consultar, filtrar e reaproveitar pela equipe.</p>
+</div>
+<div class="grid-3">
+<article class="card summary-card"><div class="icon">📄</div><h3>Projeto elétrico PDF → Excel</h3><p>Extração de tags, páginas, sinais, endereços e I/O para apoiar revisão e análise técnica.</p></article>
+<article class="card summary-card"><div class="icon">🧰</div><h3>DWG → DXF</h3><p>Conversão de desenhos técnicos para facilitar leitura e uso em fluxos de análise.</p></article>
+<article class="card summary-card"><div class="icon">🧪</div><h3>Analisador elétrico</h3><p>Organização de páginas, sinais e descrições para apoiar migração, revisão e comparação com lógica PLC.</p></article>
+<article class="card summary-card"><div class="icon">🌐</div><h3>Documentação em HTML</h3><p>Uso de HTML para preservar melhor estrutura de manuais, tabelas, menus e navegação.</p></article>
+<article class="card summary-card"><div class="icon">💬</div><h3>Base WhatsApp técnico</h3><p>Separação por tecnologia de dúvidas, soluções, troubleshooting e aprendizados do time.</p></article>
+<article class="card summary-card"><div class="icon">🔗</div><h3>MCP e integrações</h3><p>Estudos para melhorar busca direcionada, começando por Siemens e avaliando futuras integrações.</p></article>
+</div>
+</section>
+<section id="boas-praticas">
+<div class="section-head">
+<div><div class="section-kicker">Boas práticas</div><h2 class="section-title">Como conversar melhor com a IA</h2></div>
+<p>Não precisa escrever como programador nem criar um texto cheio de regras. Explique o cenário como explicaria para alguém da equipe e deixe claro o que você precisa receber.</p>
+</div>
+<div class="card practice-intro">
+<h3>Uma pergunta boa tem quatro partes simples</h3>
+<p>Com tecnologia, versão, contexto e resultado esperado, a IA tende a buscar melhor, responder com mais precisão e evitar recomendações genéricas.</p>
+<div class="practice-grid">
+<article class="practice-item"><span class="practice-number">1</span><h4>Contexto</h4><p>Informe tecnologia, projeto, equipamento ou documento envolvido.</p></article>
+<article class="practice-item"><span class="practice-number">2</span><h4>Versão ou referência</h4><p>Quando fizer diferença, indique versão, modelo, arquivo, página ou tag.</p></article>
+<article class="practice-item"><span class="practice-number">3</span><h4>Recorte da necessidade</h4><p>Diga exatamente qual parte quer analisar, explicar, revisar ou comparar.</p></article>
+<article class="practice-item"><span class="practice-number">4</span><h4>Resultado esperado</h4><p>Peça o formato: passo a passo, tabela, diagnóstico, e-mail, checklist ou procedimento.</p></article>
+</div>
+</div>
+<div class="prompt-grid">
+<article class="card prompt-card">
+<h3>Exemplo técnico · PLC e automação</h3>
+<p>Em vez de pedir uma análise ampla, direcione o que deve ser verificado.</p>
+<div class="prompt-example"><b>Exemplo:</b>
+Estou analisando uma lógica no Studio 5000 para partida de uma bomba. Explique a sequência de funcionamento, identifique permissivos, intertravamentos e alarmes. Depois, monte uma tabela com os cenários de partida, parada, falha de sensor e perda de comunicação.</div>
+</article>
+<article class="card prompt-card">
+<h3>Exemplo técnico · comunicação</h3>
+<p>Para troubleshooting, informe o que está funcionando e o que não está.</p>
+<div class="prompt-example"><b>Exemplo:</b>
+Tenho uma comunicação Modbus TCP entre o CLP e o equipamento. Na porta 5000 há resposta, mas na 502 ocorre erro. Analise IP, porta, função Modbus, timeout, registradores, sentido de leitura e escrita e hipóteses de falha. Priorize as verificações de campo.</div>
+</article>
+<article class="card prompt-card">
+<h3>Exemplo · documentos e projetos</h3>
+<p>Defina o que deve ser extraído e como você quer conferir o resultado.</p>
+<div class="prompt-example"><b>Exemplo:</b>
+Leia este projeto elétrico e gere uma tabela com tag, descrição, tipo de sinal, endereço de I/O, página de origem e observações. Não pule páginas. Marque como “não identificado” qualquer informação que não esteja legível ou não esteja no documento.</div>
+</article>
+<article class="card prompt-card">
+<h3>Exemplo · textos com linguagem natural</h3>
+<p>Para e-mails e comunicados, peça objetividade e preserve o seu jeito de escrever.</p>
+<div class="prompt-example"><b>Exemplo:</b>
+Transforme estas anotações em um e-mail direto e profissional. Mantenha uma linguagem natural, sem frases prontas, sem exagero e sem parecer texto gerado. Não invente informações. Deixe claro o que já foi feito, o que está pendente e a próxima ação.</div>
+</article>
+</div>
+<div class="natural-note">
+<h3>Para o texto não ficar com “cara de IA”</h3>
+<p>Peça para manter o seu tom, use frases que você realmente falaria e revise nomes, datas, prazos e termos técnicos antes de enviar. Evite pedir “um texto perfeito” ou “muito elaborado”: normalmente, “direto, claro e no meu jeito de escrever” funciona melhor.</p>
+</div>
+</section>
+<section id="governanca">
+<div class="section-head">
+<div><div class="section-kicker">Governança</div><h2 class="section-title">Quando usar Bot Técnico e quando usar Assistente</h2></div>
+<p>Foi definida uma orientação simples para direcionar o uso: bot técnico quando há base específica; assistente geral quando a necessidade é mais ampla.</p>
+</div>
+<div class="two-col">
+<div class="card box"><h3>Use Bot Técnico quando...</h3><ul><li>A dúvida envolve uma tecnologia específica.</li><li>Existe documentação indexada e validada.</li><li>É necessário respeitar versão, produto e escopo.</li><li>O tema envolve troubleshooting, manual, procedimento ou arquitetura.</li><li>Você precisa reduzir risco de resposta genérica.</li></ul></div>
+<div class="card box"><h3>Use Assistente Geral quando...</h3><ul><li>Precisa escrever e-mail, relatório ou apresentação.</li><li>Quer organizar ideias, tabelas ou resumo.</li><li>Vai revisar lógica, criar documento ou comparar alternativas.</li><li>Não há necessidade de buscar uma base técnica específica.</li><li>Precisa de apoio geral para estruturar, revisar ou organizar informações.</li></ul></div>
+</div>
+<div class="section-head" style="margin-top:32px"><div><div class="section-kicker">Processo recomendado</div><h2 class="section-title">Fluxo para publicar melhorias com segurança</h2></div></div>
+<div class="process">
+<div class="step"><b>1</b><h3>Coletar</h3><p>Receber documentação, feedback, caso real ou necessidade do time.</p></div>
+<div class="step"><b>2</b><h3>Organizar</h3><p>Separar por tecnologia, versão, projeto, tema e tipo de conteúdo.</p></div>
+<div class="step"><b>3</b><h3>Validar</h3><p>Revisar tecnicamente antes de publicar em bots ou bases.</p></div>
+<div class="step"><b>4</b><h3>Publicar</h3><p>Atualizar index, prompt, bot, Workspace ou ferramenta.</p></div>
+<div class="step"><b>5</b><h3>Medir</h3><p>Coletar feedback, ajustar quando necessário e acompanhar evolução de uso.</p></div>
+</div>
+</section>
+<section id="roadmap">
+<div class="section-head">
+<div><div class="section-kicker">Roadmap</div><h2 class="section-title">Roadmap de evolução</h2></div>
+<p>Roadmap consolidado a partir dos comunicados enviados ao time e do estágio atual do trabalho.</p>
+</div>
+<div class="wave-grid">
+<article class="card wave"><div class="period">Onda 1 · Agora</div><h3>Estabilização dos bots</h3><ul><li>Revisar prompts por tecnologia.</li><li>Reduzir buscas amplas e melhorar tempo de resposta.</li><li>Melhorar aderência à versão, produto e documentação.</li><li>Testar bots Siemens com MCP.</li></ul></article>
+<article class="card wave"><div class="period">Onda 2 · Curto prazo</div><h3>Ferramentas de engenharia</h3><ul><li>Disponibilizar conversor PDF → Excel para testes.</li><li>Testar conversão DWG → DXF.</li><li>Evoluir analisador de projeto elétrico.</li><li>Padronizar saídas para análise e reaproveitamento.</li></ul></article>
+<article class="card wave"><div class="period">Onda 3 · Curto/Médio</div><h3>Expansão técnica</h3><ul><li>Rockwell, WAGO e Schneider.</li><li>Relés inteligentes.</li><li>Drivers e comunicação industrial.</li><li>Brewmaxx / Plant iT.</li></ul></article>
+<article class="card wave"><div class="period">Onda 4 · Médio prazo</div><h3>Workspaces em escala</h3><ul><li>Modelo padrão de Workspace por projeto.</li><li>Checklist de documentos mínimos.</li><li>Templates de onboarding.</li><li>Catálogo oficial de projetos.</li></ul></article>
+<article class="card wave"><div class="period">Onda 5 · Médio prazo</div><h3>Base TA | IHM</h3><ul><li>Conversas técnicas categorizadas.</li><li>Lições aprendidas por tecnologia.</li><li>Procedimentos e boas práticas.</li><li>Curadoria técnica recorrente.</li></ul></article>
+<article class="card wave"><div class="period">Onda 6 · Estratégico</div><h3>Integrações</h3><ul><li>SharePoint / bases documentais.</li><li>MCPs oficiais e customizados.</li><li>Catálogo com status e links.</li><li>Governança de versionamento.</li></ul></article>
+<article class="card wave"><div class="period">Onda 7 · Estratégico</div><h3>KPI e medição</h3><ul><li>Tempo economizado por consulta.</li><li>Uso por bot e por projeto.</li><li>Feedbacks resolvidos.</li><li>Redução de retrabalho.</li></ul></article>
+<article class="card wave"><div class="period">Onda 8 · Futuro</div><h3>SAI incorporado à rotina da engenharia</h3><ul><li>Uso integrado ao fluxo dos projetos.</li><li>Apoio a DR, proposta e comissionamento.</li><li>Suporte a estudos e certificações.</li><li>Base técnica atualizada de forma recorrente.</li></ul></article>
+</div>
+</section>
+<section id="indicadores">
+<div class="section-head">
+<div><div class="section-kicker">Indicadores do KR1</div><h2 class="section-title">Painel de acompanhamento do KR1</h2></div>
+<p>Indicadores preenchidos com base no OKR informado, nos projetos formalmente mapeados e nos números observados no catálogo SAI.</p>
+</div>
+<div class="kpi-strip">
+<div class="kpi"><strong>73</strong><span>Total de projetos considerados no OKR</span></div>
+<div class="kpi"><strong>59</strong><span>Meta do KR1: 80% dos projetos</span></div>
+<div class="kpi"><strong>20</strong><span>Projetos mapeados com uso de IA</span></div>
+<div class="kpi"><strong>39</strong><span>Projetos restantes para atingir o KR1</span></div>
+<div class="kpi"><strong>27,4%</strong><span>Cobertura atual dos projetos</span></div>
+</div>
+<div class="kpi-strip compact" style="margin-top:14px">
+<div class="kpi"><strong>33,9%</strong><span>Atingimento da meta KR1</span></div>
+<div class="kpi"><strong>25</strong><span>Ferramentas / temas publicados ou mapeados</span></div>
+<div class="kpi"><strong>2.193</strong><span>Usos acumulados identificados pelo 🔥</span></div>
+<div class="kpi"><strong>553</strong><span>Maior volume individual: WinCC OA</span></div>
+</div>
+<div class="callout"><div><h3>Mensagem de acompanhamento</h3><p>O KR1 possui atualmente 20 projetos formalmente mapeados com uso de IA, seguindo o critério de acompanhamento definido para a auditoria interna. Sabemos que o uso da IA já ocorre de forma mais ampla no dia a dia dos projetos, porém nem todos os casos ainda estão registrados como evidência formal dentro do acompanhamento do OKR. O próximo passo é ampliar essa cobertura para mais 39 projetos, priorizando projetos ativos, registrando evidências simples de uso e incorporando bots e Workspaces à rotina de engenharia de forma mais estruturada.</p></div></div>
+</section>
+<footer class="footer">
+<div><h2>SAI TA | IHM · Roadmap de Acompanhamento</h2><p>Material executivo para acompanhamento do KR1, comunicação do roadmap e alinhamento das próximas etapas.</p></div>
+<div class="print-note">Versão HTML<br/>Atualizado em 22/06/2026 · 25 links diretos vinculados · KR1, métricas de uso e roadmap</div>
+</footer>
+</main>
+<script id="botSearchScript">
+      (function () {
+        const field = document.getElementById('botSearch');
+        const board = document.querySelector('.bot-board');
+        const empty = document.getElementById('catalogEmpty');
+        const filters = Array.from(document.querySelectorAll('.catalog-filter'));
+        if (!board) return;
+        let activeFilter = 'all';
+
+        function applyFilters() {
+          const term = field ? field.value.trim().toLocaleLowerCase('pt-BR') : '';
+          let visible = 0;
+          board.querySelectorAll('.bot[data-bot]').forEach(function (card) {
+            const textMatches = !term || card.textContent.toLocaleLowerCase('pt-BR').includes(term);
+            const categories = (card.getAttribute('data-category') || '').split(/\s+/);
+            const categoryMatches = activeFilter === 'all' || categories.includes(activeFilter);
+            const match = textMatches && categoryMatches;
+            card.classList.toggle('is-hidden', !match);
+            if (match) visible += 1;
+          });
+          if (empty) empty.classList.toggle('visible', visible === 0);
+        }
+
+        if (field) field.addEventListener('input', applyFilters);
+        filters.forEach(function (button) {
+          button.addEventListener('click', function () {
+            activeFilter = this.getAttribute('data-filter') || 'all';
+            filters.forEach(function (item) { item.classList.toggle('active', item === button); });
+            applyFilters();
+          });
+        });
+      }());
+</script></body>
+</html>
